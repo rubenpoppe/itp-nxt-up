@@ -3,16 +3,9 @@ import { Recipe } from '../types';
 import Link from 'next/link';
 import { getAllRecipes } from '../util/api';
 import humanize from '../util/humanize-duration';
-import {
-	Card,
-	CardContent,
-	CardMedia,
-	Chip,
-	SvgIcon,
-	Typography,
-} from '@mui/material';
+import { Card, CardContent, CardMedia, Typography } from '@mui/material';
+import FoodLabel from '../components/FoodLabel';
 import style from '../styles/Home.module.css';
-import Leaf from '../assets/leaf.svg';
 
 export async function getStaticProps() {
 	const recipes = await getAllRecipes();
@@ -22,7 +15,14 @@ export async function getStaticProps() {
 const Home: NextPage<{ allRecipes: Recipe[] }> = ({ allRecipes }) => {
 	return (
 		<>
-			<h1 style={{ position: 'absolute', width: 0, height: 0, overflow: 'hidden' }}>
+			<h1
+				style={{
+					position: 'absolute',
+					width: 0,
+					height: 0,
+					overflow: 'hidden',
+				}}
+			>
 				Overview
 			</h1>
 			<div className={style.wrapper}>
@@ -51,21 +51,9 @@ const Home: NextPage<{ allRecipes: Recipe[] }> = ({ allRecipes }) => {
 								)}
 								<div className={style['chip-wrapper']}>
 									{recipe.vegetarian && (
-										<Chip
-											color="success"
-											label="Vegetarian"
-											icon={<SvgIcon component={Leaf} />}
-											size="small"
-										/>
+										<FoodLabel label="Vegetarian" size="small" />
 									)}
-									{recipe.vegan && (
-										<Chip
-											color="success"
-											label="Vegan"
-											icon={<SvgIcon component={Leaf} />}
-											size="small"
-										/>
-									)}
+									{recipe.vegan && <FoodLabel label="Vegan" size="small" />}
 								</div>
 								<Typography variant="body2" color="text.secondary">
 									{recipe.description}

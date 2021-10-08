@@ -4,14 +4,12 @@ import { useState } from 'react';
 import { Print, Share } from '@mui/icons-material';
 import {
 	Checkbox,
-	Chip,
 	IconButton,
 	List,
 	ListItem,
 	ListItemButton,
 	ListItemIcon,
 	ListItemText,
-	SvgIcon,
 	Table,
 	TableBody,
 	TableCell,
@@ -19,10 +17,10 @@ import {
 	TableRow,
 	Typography,
 } from '@mui/material';
+import FoodLabel from '../../components/FoodLabel';
 import { getAllRecipesSlug, getRecipeBySlug } from '../../util/api';
 import humanize from '../../util/humanize-duration';
 import style from '../../styles/Detail.module.css';
-import Leaf from '../../assets/leaf.svg';
 
 export async function getStaticProps({ params }: any) {
 	const recipe = await getRecipeBySlug(params.slug);
@@ -64,20 +62,8 @@ const Detail: NextPage<{ recipe: Recipe }> = ({ recipe }) => {
 					</div>
 				</div>
 				<div className={style['chip-wrapper']}>
-					{recipe.vegetarian && (
-						<Chip
-							color="success"
-							label="Vegetarian"
-							icon={<SvgIcon component={Leaf} />}
-						/>
-					)}
-					{recipe.vegan && (
-						<Chip
-							color="success"
-							label="Vegan"
-							icon={<SvgIcon component={Leaf} />}
-						/>
-					)}
+					{recipe.vegetarian && <FoodLabel label="Vegetarian" />}
+					{recipe.vegan && <FoodLabel label="Vegan" />}
 				</div>
 				<div className={style['recipe-info']}>
 					<Typography variant="overline">
