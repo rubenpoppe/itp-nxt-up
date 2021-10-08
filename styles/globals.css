@@ -20,8 +20,17 @@ main {
   max-width: 90%;
 }
 
+section {
+  margin: 2rem 0;
+}
+
 @media screen and (min-width: 600px) {
   main {
     max-width: 80%;
+  }
+
+  article {
+    width: clamp(1px, 80%, 42rem);
+    margin: auto;
   }
 }
