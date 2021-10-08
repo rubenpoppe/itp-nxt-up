@@ -21,49 +21,61 @@ export async function getStaticProps() {
 
 const Home: NextPage<{ allRecipes: Recipe[] }> = ({ allRecipes }) => {
 	return (
-		<div className={style.wrapper}>
-			{allRecipes.map((recipe: Recipe) => (
-				<Link href={`/recipes/${recipe.slug}`} passHref key={recipe.slug}>
-					<Card className={style.card} tabIndex={0} role="link" aria-label={recipe.title}>
-						<CardMedia
-							component="img"
-							height="194"
-							image={recipe.image.url}
-							alt={recipe.image.alt}
-						/>
-						<CardContent>
-							<Typography variant="h5" component="h2">{recipe.title}</Typography>
-							{!!recipe.totalTime && (
-								<Typography variant="overline">
-									{humanize(recipe.totalTime*60*1000)}
+		<>
+			<h1 style={{ position: 'absolute', width: 0, height: 0, overflow: 'hidden' }}>
+				Overview
+			</h1>
+			<div className={style.wrapper}>
+				{allRecipes.map((recipe: Recipe) => (
+					<Link href={`/recipes/${recipe.slug}`} passHref key={recipe.slug}>
+						<Card
+							className={style.card}
+							tabIndex={0}
+							role="link"
+							aria-label={recipe.title}
+						>
+							<CardMedia
+								component="img"
+								height="194"
+								image={recipe.image.url}
+								alt={recipe.image.alt}
+							/>
+							<CardContent>
+								<Typography variant="h5" component="h2">
+									{recipe.title}
 								</Typography>
-							)}
-							<div className={style['chip-wrapper']}>
-								{recipe.vegetarian && (
-									<Chip
-										color="success"
-										label="Vegetarian"
-										icon={<SvgIcon component={Leaf} />}
-										size="small"
-									/>
+								{!!recipe.totalTime && (
+									<Typography variant="overline">
+										{humanize(recipe.totalTime * 60 * 1000)}
+									</Typography>
 								)}
-								{recipe.vegan && (
-									<Chip
-										color="success"
-										label="Vegan"
-										icon={<SvgIcon component={Leaf} />}
-										size="small"
-									/>
-								)}
-							</div>
-							<Typography variant="body2" color="text.secondary">
-								{recipe.description}
-							</Typography>
-						</CardContent>
-					</Card>
-				</Link>
-			))}
-		</div>
+								<div className={style['chip-wrapper']}>
+									{recipe.vegetarian && (
+										<Chip
+											color="success"
+											label="Vegetarian"
+											icon={<SvgIcon component={Leaf} />}
+											size="small"
+										/>
+									)}
+									{recipe.vegan && (
+										<Chip
+											color="success"
+											label="Vegan"
+											icon={<SvgIcon component={Leaf} />}
+											size="small"
+										/>
+									)}
+								</div>
+								<Typography variant="body2" color="text.secondary">
+									{recipe.description}
+								</Typography>
+							</CardContent>
+						</Card>
+					</Link>
+				))}
+			</div>
+		</>
 	);
 };
 
