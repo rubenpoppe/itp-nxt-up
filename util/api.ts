@@ -16,6 +16,7 @@ export const getAllRecipes = (): Promise<{ allRecipe: Recipe[] }> => {
 				vegetarian
 				image {
 					url
+					alt
 				}
 				totalTime
 				_publishedAt
