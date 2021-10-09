@@ -1,36 +1,51 @@
 html,
 body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+	padding: 0;
+	margin: 0;
+	font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+		Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
 a {
-  color: inherit;
-  text-decoration: none;
+	color: inherit;
+	text-decoration: none;
 }
 
 * {
-  box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.MuiToolbar-root a {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
 }
 
 main {
-  margin: 2rem auto;
-  max-width: 90%;
+	margin: 2rem auto;
+	max-width: 90%;
 }
 
 section {
-  margin: 2rem 0;
+	margin: 2rem 0;
+}
+
+@media screen and (max-width: 500px) {
+	.MuiToolbar-root a span {
+		position: absolute;
+		width: 0;
+		height: 0;
+		overflow: hidden;
+	}
 }
 
 @media screen and (min-width: 600px) {
-  main {
-    max-width: 80%;
-  }
+	main {
+		max-width: 80%;
+	}
 
-  article {
-    width: clamp(1px, 80%, 42rem);
-    margin: auto;
-  }
+	article {
+		width: clamp(1px, 80%, 42rem);
+		margin: auto;
+	}
 }
