@@ -5,7 +5,25 @@
 }
 
 .card {
-	cursor: pointer;
+	position: relative;
+}
+
+.card:focus-within {
+	outline: 5px auto Highlight;
+	outline: 5px auto -webkit-focus-ring-color;
+}
+
+.card a:focus {
+	outline: none;
+}
+
+.card a::after {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
 }
 
 .chip-wrapper {

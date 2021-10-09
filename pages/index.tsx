@@ -1,5 +1,5 @@
 import type { NextPage } from 'next';
-import Head from 'next/head'
+import Head from 'next/head';
 import { Recipe } from '../types';
 import Link from 'next/link';
 import { getAllRecipes } from '../util/api';
@@ -16,10 +16,10 @@ export async function getStaticProps() {
 const Home: NextPage<{ allRecipes: Recipe[] }> = ({ allRecipes }) => {
 	return (
 		<>
-		<Head>
-			<title>Recipes.com</title>
-			<meta name="description" content="All the recipes in one place" />
-		</Head>
+			<Head>
+				<title>Recipes.com</title>
+				<meta name="description" content="All the recipes in one place" />
+			</Head>
 			<h1
 				style={{
 					position: 'absolute',
@@ -32,40 +32,33 @@ const Home: NextPage<{ allRecipes: Recipe[] }> = ({ allRecipes }) => {
 			</h1>
 			<div className={style.wrapper}>
 				{allRecipes.map((recipe: Recipe) => (
-					<Link href={`/recipes/${recipe.slug}`} passHref key={recipe.slug}>
-						<Card
-							className={style.card}
-							tabIndex={0}
-							role="link"
-							aria-label={recipe.title}
-						>
-							<CardMedia
-								component="img"
-								height="194"
-								image={recipe.image.url}
-								alt={recipe.image.alt}
-							/>
-							<CardContent>
-								<Typography variant="h5" component="h2">
-									{recipe.title}
+					<Card className={style.card} key={recipe.slug}>
+						<CardMedia
+							component="img"
+							height="194"
+							image={recipe.image.url}
+							alt={recipe.image.alt}
+						/>
+						<CardContent>
+							<Typography variant="h5" component="h2">
+								<Link href={`/recipes/${recipe.slug}`}>{recipe.title}</Link>
+							</Typography>
+							{!!recipe.totalTime && (
+								<Typography variant="overline">
+									{humanize(recipe.totalTime * 60 * 1000)}
 								</Typography>
-								{!!recipe.totalTime && (
-									<Typography variant="overline">
-										{humanize(recipe.totalTime * 60 * 1000)}
-									</Typography>
+							)}
+							<div className={style['chip-wrapper']}>
+								{recipe.vegetarian && (
+									<FoodLabel label="Vegetarian" size="small" />
 								)}
-								<div className={style['chip-wrapper']}>
-									{recipe.vegetarian && (
-										<FoodLabel label="Vegetarian" size="small" />
-									)}
-									{recipe.vegan && <FoodLabel label="Vegan" size="small" />}
-								</div>
-								<Typography variant="body2" color="text.secondary">
-									{recipe.description}
-								</Typography>
-							</CardContent>
-						</Card>
-					</Link>
+								{recipe.vegan && <FoodLabel label="Vegan" size="small" />}
+							</div>
+							<Typography variant="body2" color="text.secondary">
+								{recipe.description}
+							</Typography>
+						</CardContent>
+					</Card>
 				))}
 			</div>
 		</>
