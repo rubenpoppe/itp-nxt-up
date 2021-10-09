@@ -82,10 +82,13 @@ const Detail: NextPage<{ recipe: Recipe }> = ({ recipe }) => {
 								{recipe.title}
 							</Typography>
 							<div>
-								<IconButton onClick={() => window.print()}>
+								<IconButton
+									onClick={() => window.print()}
+									aria-label="print recipe"
+								>
 									<Print fontSize="large" />
 								</IconButton>
-								<IconButton>
+								<IconButton aria-label="share">
 									<Share />
 								</IconButton>
 							</div>
