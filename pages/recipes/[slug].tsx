@@ -14,6 +14,7 @@ import {
 	Table,
 	TableBody,
 	TableCell,
+	TableContainer,
 	TableHead,
 	TableRow,
 	Typography,
@@ -81,7 +82,7 @@ const Detail: NextPage<{ recipe: Recipe }> = ({ recipe }) => {
 							<Typography variant="h2" component="h1">
 								{recipe.title}
 							</Typography>
-							<div>
+							<div className={style['actions-wrapper']}>
 								<IconButton
 									onClick={() => window.print()}
 									aria-label="print recipe"
@@ -161,38 +162,44 @@ const Detail: NextPage<{ recipe: Recipe }> = ({ recipe }) => {
 						<Typography variant="h4" component="h2">
 							Nutrition facts
 						</Typography>
-						<Table>
-							<TableHead>
-								<TableRow>
-									{recipe.calories && <TableCell>Calories</TableCell>}
-									{recipe.fatContent && <TableCell>Fat (g)</TableCell>}
-									{recipe.cholesterolContent && (
-										<TableCell>Cholesterol (mg)</TableCell>
-									)}
-									{recipe.proteinContent && <TableCell>Protein (g)</TableCell>}
-									{recipe.carbohydrateContent && (
-										<TableCell>Carbs (g)</TableCell>
-									)}
-								</TableRow>
-							</TableHead>
-							<TableBody>
-								<TableRow>
-									{recipe.calories && <TableCell>{recipe.calories}</TableCell>}
-									{recipe.fatContent && (
-										<TableCell>{recipe.fatContent}</TableCell>
-									)}
-									{recipe.cholesterolContent && (
-										<TableCell>{recipe.cholesterolContent}</TableCell>
-									)}
-									{recipe.proteinContent && (
-										<TableCell>{recipe.proteinContent}</TableCell>
-									)}
-									{recipe.carbohydrateContent && (
-										<TableCell>{recipe.carbohydrateContent}</TableCell>
-									)}
-								</TableRow>
-							</TableBody>
-						</Table>
+						<TableContainer>
+							<Table>
+								<TableHead>
+									<TableRow>
+										{recipe.calories && <TableCell>Calories</TableCell>}
+										{recipe.fatContent && <TableCell>Fat (g)</TableCell>}
+										{recipe.cholesterolContent && (
+											<TableCell>Cholesterol (mg)</TableCell>
+										)}
+										{recipe.proteinContent && (
+											<TableCell>Protein (g)</TableCell>
+										)}
+										{recipe.carbohydrateContent && (
+											<TableCell>Carbs (g)</TableCell>
+										)}
+									</TableRow>
+								</TableHead>
+								<TableBody>
+									<TableRow>
+										{recipe.calories && (
+											<TableCell>{recipe.calories}</TableCell>
+										)}
+										{recipe.fatContent && (
+											<TableCell>{recipe.fatContent}</TableCell>
+										)}
+										{recipe.cholesterolContent && (
+											<TableCell>{recipe.cholesterolContent}</TableCell>
+										)}
+										{recipe.proteinContent && (
+											<TableCell>{recipe.proteinContent}</TableCell>
+										)}
+										{recipe.carbohydrateContent && (
+											<TableCell>{recipe.carbohydrateContent}</TableCell>
+										)}
+									</TableRow>
+								</TableBody>
+							</Table>
+						</TableContainer>
 					</section>
 				)}
 			</article>

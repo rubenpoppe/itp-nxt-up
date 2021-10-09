@@ -19,6 +19,12 @@
 	align-items: center;
 }
 
+.actions-wrapper {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
 .recipe-info {
 	display: flex;
 	flex-direction: column;
