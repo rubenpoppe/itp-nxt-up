@@ -19,8 +19,8 @@ class MyDocument extends Document {
 		return (
 			<Html lang="en">
 				<Head>
-					<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-					<link rel="shortcut icon" href="/logo.svg" type="image/svg" />
+					<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+					<link rel="shortcut icon" href="/icon.svg" type="image/svg" />
 					<meta name="theme-color" content="#1976d2" />
 				</Head>
 				<body>
