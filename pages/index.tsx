@@ -1,4 +1,5 @@
 import type { NextPage } from 'next';
+import Head from 'next/head'
 import { Recipe } from '../types';
 import Link from 'next/link';
 import { getAllRecipes } from '../util/api';
@@ -15,6 +16,10 @@ export async function getStaticProps() {
 const Home: NextPage<{ allRecipes: Recipe[] }> = ({ allRecipes }) => {
 	return (
 		<>
+		<Head>
+			<title>Recipes.com</title>
+			<meta name="description" content="All the recipes in one place" />
+		</Head>
 			<h1
 				style={{
 					position: 'absolute',
