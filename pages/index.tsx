@@ -27,8 +27,9 @@ const Home: NextPage<{ allRecipes: Recipe[] }> = ({ allRecipes }) => {
 					height: 0,
 					overflow: 'hidden',
 				}}
+				aria-hidden="true"
 			>
-				Overview
+				Recipes.com overview
 			</h1>
 			<div className={style.wrapper}>
 				{allRecipes.map((recipe: Recipe) => (

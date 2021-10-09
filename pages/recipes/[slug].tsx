@@ -125,15 +125,22 @@ const Detail: NextPage<{ recipe: Recipe }> = ({ recipe }) => {
 							<ListItem key={ingredient} disablePadding>
 								<ListItemButton
 									onClick={() => handleIngredientClick(ingredient)}
+									role="checkbox"
+									aria-checked={ingredientsChecked.includes(ingredient)}
 								>
 									<ListItemIcon>
 										<Checkbox
 											checked={ingredientsChecked.includes(ingredient)}
 											tabIndex={-1}
-											inputProps={{ 'aria-label': ingredient }}
+											inputProps={{
+												'aria-labelledby': ingredient.replace(/ /g, ''),
+											}}
 										/>
 									</ListItemIcon>
-									<ListItemText primary={ingredient} />
+									<ListItemText
+										primary={ingredient}
+										id={ingredient.replace(/ /g, '')}
+									/>
 								</ListItemButton>
 							</ListItem>
 						))}
