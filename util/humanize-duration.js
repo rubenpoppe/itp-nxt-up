@@ -46,32 +46,58 @@
 		ms = Math.abs(ms);
 
 		var dictionary = {
-			y: function (c) {
-				return 'year' + (c === 1 ? '' : 's');
+			en: {
+				y: function (c) {
+					return 'year' + (c === 1 ? '' : 's');
+				},
+				mo: function (c) {
+					return 'month' + (c === 1 ? '' : 's');
+				},
+				w: function (c) {
+					return 'week' + (c === 1 ? '' : 's');
+				},
+				d: function (c) {
+					return 'day' + (c === 1 ? '' : 's');
+				},
+				h: function (c) {
+					return 'hour' + (c === 1 ? '' : 's');
+				},
+				m: function (c) {
+					return 'minute' + (c === 1 ? '' : 's');
+				},
+				s: function (c) {
+					return 'second' + (c === 1 ? '' : 's');
+				},
+				ms: function (c) {
+					return 'millisecond' + (c === 1 ? '' : 's');
+				},
+				decimal: '.',
 			},
-			mo: function (c) {
-				return 'month' + (c === 1 ? '' : 's');
+			iso: {
+				y: function (c) {
+					return 'Y';
+				},
+				mo: function (c) {
+					return 'M';
+				},
+				w: function (c) {
+					return 'W';
+				},
+				d: function (c) {
+					return 'D';
+				},
+				h: function (c) {
+					return 'H';
+				},
+				m: function (c) {
+					return 'M';
+				},
+				s: function (c) {
+					return 'S';
+				},
+				decimal: '.',
 			},
-			w: function (c) {
-				return 'week' + (c === 1 ? '' : 's');
-			},
-			d: function (c) {
-				return 'day' + (c === 1 ? '' : 's');
-			},
-			h: function (c) {
-				return 'hour' + (c === 1 ? '' : 's');
-			},
-			m: function (c) {
-				return 'minute' + (c === 1 ? '' : 's');
-			},
-			s: function (c) {
-				return 'second' + (c === 1 ? '' : 's');
-			},
-			ms: function (c) {
-				return 'millisecond' + (c === 1 ? '' : 's');
-			},
-			decimal: '.',
-		};
+		}[options.lang || 'en'];
 		var pieces = [];
 
 		// Start at the top and keep removing units, bit by bit.
