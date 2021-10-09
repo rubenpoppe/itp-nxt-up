@@ -22,6 +22,7 @@ import FoodLabel from '../../components/FoodLabel';
 import { getAllRecipesSlug, getRecipeBySlug } from '../../util/api';
 import humanize from '../../util/humanize-duration';
 import style from '../../styles/Detail.module.css';
+import StructuredData from '../../components/StructuredData';
 
 export async function getStaticProps({ params }: any) {
 	const recipe = await getRecipeBySlug(params.slug);
@@ -64,6 +65,7 @@ const Detail: NextPage<{ recipe: Recipe }> = ({ recipe }) => {
 				<meta property="og:image:height" content={`${recipe.image.height}`} />
 				<meta property="twitter:description" content={recipe.description} />
 				<meta property="twitter:image" content={recipe.image.url} />
+				<StructuredData recipe={recipe} />
 			</Head>
 			<article>
 				<section>
