@@ -48,22 +48,31 @@ const Detail: NextPage<{ recipe: Recipe }> = ({ recipe }) => {
 	return (
 		<article>
 			<section>
-				<div className={style.toolbar}>
-					<Typography variant="h2" component="h1">
-						{recipe.title}
-					</Typography>
-					<div>
-						<IconButton onClick={() => window.print()}>
-							<Print fontSize="large" />
-						</IconButton>
-						<IconButton>
-							<Share />
-						</IconButton>
+				<div
+					className={style.hero}
+					style={{
+						backgroundImage: `linear-gradient(180deg, rgba(255, 255, 255, 0.8), transparent), url(${recipe.image.url})`,
+					}}
+					title={recipe.image.alt}
+				></div>
+				<div className={style.wrapper}>
+					<div className={style.toolbar}>
+						<Typography variant="h2" component="h1">
+							{recipe.title}
+						</Typography>
+						<div>
+							<IconButton onClick={() => window.print()}>
+								<Print fontSize="large" />
+							</IconButton>
+							<IconButton>
+								<Share />
+							</IconButton>
+						</div>
 					</div>
-				</div>
-				<div className={style['chip-wrapper']}>
-					{recipe.vegetarian && <FoodLabel label="Vegetarian" />}
-					{recipe.vegan && <FoodLabel label="Vegan" />}
+					<div className={style['chip-wrapper']}>
+						{recipe.vegetarian && <FoodLabel label="Vegetarian" />}
+						{recipe.vegan && <FoodLabel label="Vegan" />}
+					</div>
 				</div>
 				<div className={style['recipe-info']}>
 					<Typography variant="overline">
