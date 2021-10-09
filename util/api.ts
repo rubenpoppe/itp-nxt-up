@@ -35,6 +35,9 @@ export const getRecipeBySlug = (slug: string): Promise<{ recipe: Recipe }> => {
 				description
 				image {
 					url
+					alt
+					width
+					height
 				}
 				vegetarian
 				vegan

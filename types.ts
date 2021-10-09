@@ -4,7 +4,7 @@ export interface Recipe {
 	description: string;
 	vegetarian: boolean;
 	vegan: boolean;
-	image: { url: string; alt: string };
+	image: { url: string; alt: string; width: number; height: number };
 	servings: number;
 	prepTime: number | undefined;
 	totalTime: number | undefined;
