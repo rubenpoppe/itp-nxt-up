@@ -15,6 +15,18 @@ a {
 	box-sizing: border-box;
 }
 
+#skiplink {
+	position: absolute;
+	top: 5rem;
+	left: 3rem;
+	z-index: 9999; /* to override app bar z-index */
+	transform: translateX(-200%);
+}
+
+#skiplink:focus {
+	transform: translateX(0);
+}
+
 .MuiToolbar-root a {
 	display: flex;
 	align-items: center;

@@ -3,10 +3,12 @@ import Link from 'next/link';
 import { AppBar, SvgIcon, Toolbar, Typography } from '@mui/material';
 import Icon from '../public/icon.svg';
 import SearchBox from './SearchBox';
+import SkipLink from './SkipLink';
 
 const Layout: FunctionComponent = ({ children }) => {
 	return (
 		<>
+			<SkipLink />
 			<AppBar position="sticky">
 				<Toolbar style={{ justifyContent: 'space-between' }}>
 					<Link href="/">
@@ -24,7 +26,7 @@ const Layout: FunctionComponent = ({ children }) => {
 					<SearchBox />
 				</Toolbar>
 			</AppBar>
-			<main>{children}</main>
+			<main id="main">{children}</main>
 		</>
 	);
 };
