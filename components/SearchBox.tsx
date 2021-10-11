@@ -30,7 +30,7 @@ const SearchBox: FunctionComponent = () => {
 				placeholder="Search"
 				value={query}
 				onChange={(e) => setQuery(e.target.value)}
-				inputProps={{ 'aria-label': 'search', name: 'search', type: 'search' }}
+				inputProps={{ 'aria-label': 'search recipes', name: 'search', type: 'search' }}
 				style={{ paddingLeft: '2em', color: '#fff' }}
 			/>
 		</form>
