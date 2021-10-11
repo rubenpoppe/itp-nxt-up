@@ -27,7 +27,6 @@ const Home: NextPage<{ allRecipes: Recipe[] }> = ({ allRecipes }) => {
 					height: 0,
 					overflow: 'hidden',
 				}}
-				aria-hidden="true"
 			>
 				Recipes.com overview
 			</h1>
