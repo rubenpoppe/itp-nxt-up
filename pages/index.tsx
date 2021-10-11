@@ -8,8 +8,12 @@ import { Card, CardContent, CardMedia, Typography } from '@mui/material';
 import FoodLabel from '../components/FoodLabel';
 import style from '../styles/Home.module.css';
 
-export async function getStaticProps() {
-	const recipes = await getAllRecipes();
+export async function getServerSideProps({
+	query: { search },
+}: {
+	query: { search: string };
+}) {
+	const recipes = await getAllRecipes(search);
 	return { props: recipes };
 }
 

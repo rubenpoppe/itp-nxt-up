@@ -2,12 +2,13 @@ import { FunctionComponent } from 'react';
 import Link from 'next/link';
 import { AppBar, SvgIcon, Toolbar, Typography } from '@mui/material';
 import Icon from '../public/icon.svg';
+import SearchBox from './SearchBox';
 
 const Layout: FunctionComponent = ({ children }) => {
 	return (
 		<>
 			<AppBar position="sticky">
-				<Toolbar>
+				<Toolbar style={{ justifyContent: 'space-between' }}>
 					<Link href="/">
 						<a>
 							<SvgIcon
@@ -20,6 +21,7 @@ const Layout: FunctionComponent = ({ children }) => {
 							</Typography>
 						</a>
 					</Link>
+					<SearchBox />
 				</Toolbar>
 			</AppBar>
 			<main>{children}</main>

@@ -5,10 +5,12 @@ const client = new GraphQLClient(process.env.CMS_URL, {
 	headers: { Authorization: `Bearer ${process.env.CMS_API_KEY}` },
 });
 
-export const getAllRecipes = (): Promise<{ allRecipe: Recipe[] }> => {
+export const getAllRecipes = (
+	params: string
+): Promise<{ allRecipe: Recipe[] }> => {
 	const query = gql`
 		{
-			allRecipes {
+			allRecipes(filter: {title: {matches: {pattern: "${params || ''}"}}}) {
 				title
 				slug
 				description
